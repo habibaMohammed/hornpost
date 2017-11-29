@@ -53,19 +53,6 @@ Route::group(['middleware' => ['auth']], function()
  Route::post('new-video', 'VideoController@add_video');
 });
 //users profile
-
- Route::post('admin-add','UserController@add_admin');
- Route::post('activate-user','UserController@activate');
- //video
-  // Route::post('video-add','VideoController@store');
-Route::get('user/{id}','UserController@profile')->where('id', '[0-9]+');
-// display list of posts
-Route::get('user/{id}/posts','UserController@user_posts')->where('id', '[0-9]+');
-// display single post
-Route::get('/{slug}',['as' => 'post', 'uses' => 'PostController@show'])->where('slug', '[A-Za-z0-9-_]+');
-//categories
-
-
 // verification token resend form
 Route::get('verify/resend', [
     'uses' => 'Auth\VerifyController@showResendForm',
@@ -83,3 +70,16 @@ Route::get('verify/{token?}', [
     'uses' => 'Auth\VerifyController@verify',
     'as' => 'verification.verify',
 ]);
+
+ Route::post('admin-add','UserController@add_admin');
+ Route::post('activate-user','UserController@activate');
+ //video
+  // Route::post('video-add','VideoController@store');
+Route::get('user/{id}','UserController@profile')->where('id', '[0-9]+');
+// display list of posts
+Route::get('user/{id}/posts','UserController@user_posts')->where('id', '[0-9]+');
+// display single post
+Route::get('/{slug}',['as' => 'post', 'uses' => 'PostController@show'])->where('slug', '[A-Za-z0-9-_]+');
+//categories
+
+

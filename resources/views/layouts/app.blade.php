@@ -54,10 +54,10 @@
                 </button> -->
 
                 <!-- Branding Image -->
-               <!--  <a class="navbar-brand" href="{{ url('/') }}">
-                    eNews
-                </a> -->
-                 <button type="button" class="btn  btn-lg navbar-brand" data-toggle="modal" data-target="#myModal" data-backdrop="false" ><span  class="glyphicon glyphicon-menu-hamburger"></span>
+                <a class="navbar-brand" href="{{ url('/') }}">
+                  HornPost
+                </a>
+                 <button type="button" class="btn  btn-lg " data-toggle="modal" data-target="#myModal" data-backdrop="false" ><span  class="glyphicon glyphicon-menu-hamburger"></span>
                     </button>
             </div>
 
