@@ -1,4 +1,5 @@
 Local Installation, I assume you have local server like Xampp
+
 Create a database locally named news 
 Import the news.sql 
 
