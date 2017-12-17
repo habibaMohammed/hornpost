@@ -15,9 +15,9 @@ class PostController extends Controller
     public function index()
   {
     //fetch 5 posts from database which are active and latest
-    $topposts = Posts::where('active',1)->where('category','=','top news')->orderBy('created_at','desc')->paginate(3);
-     $posts = Posts::where('active',1)->where('category','=','latest')->orderBy('created_at','desc')->paginate(3);
-     $trendingposts = Posts::where('active',1)->where('category','=','trending')->orderBy('created_at','desc')->paginate(3);
+    $topposts = Posts::where('active',1)->where('subcategory','=','top news')->orderBy('created_at','desc')->paginate(3);
+     $posts = Posts::where('active',1)->where('subcategory','=','latest')->orderBy('created_at','desc')->paginate(3);
+     $trendingposts = Posts::where('active',1)->where('subcategory','=','trending')->orderBy('created_at','desc')->paginate(3);
       $videos = Video::where('type','=','youtube')->orderBy('created_at', 'asc')->get();
     //page heading
     $title = 'Latest Posts';
@@ -40,7 +40,9 @@ class PostController extends Controller
     // if user can post i.e. user is admin or author
     if($request->user()->can_post())
     {
-      return view('posts.create');
+        $categories = Category::all(['id', 'name']);
+    return view('posts.create', compact('categories',$categories));
+    
     }    
     else 
     {

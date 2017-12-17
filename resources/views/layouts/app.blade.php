@@ -8,10 +8,11 @@
     <title>eNews</title>
 
     <!-- Fonts -->
-
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Styles -->
      <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
@@ -101,13 +102,16 @@
                   <a href="{{ url('/new-post') }}">Add new post</a>
                 </li>
                 <li>
+                  <a href="{{ url('/create_video') }}">Add new video</a>
+                </li>
+                <li>
                   <a href="{{ url('/user/'.Auth::id().'/posts') }}">My Posts</a>
                 </li>
                 @endif
 
                   @if (Auth::user()->is_admin() && Auth::user()->is_active())
                 <li>
-                  <a href="{{ url('/admin') }}">Admin</a>
+                  <a href="{{ url('/admin') }}">User Management</a>
                 </li>
               
                 @endif
@@ -152,7 +156,7 @@ There is no post till now. Login and write a new post now!!!
  
   </div> -->
   @foreach( $categories as $category )
-  <div class="col-sm-6"> 
+  <div class="col-sm-4"> 
   <div class="discussions">
     <div class="discussion_list">
   
@@ -160,6 +164,8 @@ There is no post till now. Login and write a new post now!!!
         <div class="chatter_middle">
       <h3 class="chatter_middle_title"><a href="{{ url('/category-post/'.$category->name) }}">
         {{ $category->name }}</a> </h3></div>
+
+  
          
     
  </div>
@@ -172,7 +178,25 @@ There is no post till now. Login and write a new post now!!!
   </div>
 </div>
   @endforeach
+  <div class="col-sm-4"> 
+  <div class="discussions">
+    <div class="discussion_list">
   
+
+        <div class="chatter_middle">
+      <h3 class="chatter_middle_title"><a href="{{ url('/video') }}">
+        video</a> </h3></div>
+         
+    
+ </div>
+        
+      
+    
+   
+
+     
+  </div>
+</div>
 </div>
 @endif
     
@@ -197,6 +221,6 @@ There is no post till now. Login and write a new post now!!!
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
     <script src="{{ asset('/js/jquery.min-2.1.3.js') }}"></script>
         <script src="{{ asset('/js/bootstrap.min-3.3.1.js') }}"></script>
-
+ <script src="{{ asset('/js/bootstrap-switch.min') }}"></script>
 </body>
 </html>

@@ -29,6 +29,9 @@ Route::controllers([
 // check for logged in user
 Route::group(['middleware' => ['auth']], function()
 {
+	Route::get('edit-create/{id}','CategoryController@editcategory');
+	Route::post('updatecategory','CategoryController@update');
+   Route::get('categorydelete/{id}','CategoryController@deletecategory');
  // show new post form
  Route::get('new-post','PostController@create');
  // save new post
@@ -48,6 +51,9 @@ Route::group(['middleware' => ['auth']], function()
  // delete comment
  Route::post('comment/delete/{id}','CommentController@distroy');
  Route::get('admin','UserController@admin');
+  Route::get('manage-user','UserController@manage_user');
+  // Route::post('social-link','UserController@add_social_link');
+  Route::get('create-category','UserController@create_category');
  Route::post('new-category','CategoryController@store');
  Route::post('profile', 'UserController@update_avatar');
  Route::post('new-video', 'VideoController@add_video');

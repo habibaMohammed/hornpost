@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Posts;
+use App\Category;
 use Image;
 use Auth;
 use Illuminate\Http\Request;
@@ -73,7 +74,24 @@ class UserController extends Controller {
 
    public function admin()
     {
-        return view('admin.admin');
+      $users = User::where('verified', 1)->get();
+        $categories = Category::all(['id', 'name']);
+    return view('admin.admin', compact('categories',$categories))->with('users',$users);
+    }
+
+     public function manage_user()
+    { 
+       $users = User::where('verified', 1)->get();
+        
+    return view('admin.manage_user')->with('users',$users);
+        
+    }
+
+      public function create_category()
+    { 
+        $categories = Category::all();
+    return view('posts.create_category')->with('categories',$categories);
+        
     }
 
     public function add_admin(Request $request)
@@ -92,7 +110,7 @@ class UserController extends Controller {
        $status_change->active =  $request->input('active');
      
          $status_change->save();
-    return redirect('/admin')->with('message', 'Status Changed Successfuly');     
+    return redirect('/manage-user')->with('message', 'Status Changed Successfuly');     
   }
 
 
@@ -113,7 +131,13 @@ class UserController extends Controller {
      return redirect('/user/'.Auth::id())->with('message', 'Status Changed Successfuly'); 
 
     }
-
+// public function add_social_link(Request $request)
+//   {
+//     //
+//     $user = $request->user();
+//    $name = $request->input('name');
+//    $link = $request->input('link');
+//   }
 
    // public function profile_picture(){
    //    return view('admin.profile', array('user' => Auth::user()) );

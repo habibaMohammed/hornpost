@@ -40,8 +40,10 @@
                                 @endif
                             </div>
                         </div>
+
+
                        <div class="form-group">
-                <label class="col-md-4 control-label">>Upload video</label>
+                <label class="col-md-4 control-label"> Or  Upload video</label>
                 <div class="col-md-6">
                 <input type="file" class="form-control" name="videoname">
             </div>

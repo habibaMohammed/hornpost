@@ -29,19 +29,19 @@
   <div class="form-group">
     <input required="required" value="{{ old('title') }}" placeholder="Enter title here" type="text" name = "title"class="form-control" />
   </div>
-   <div class="form-group">
-     <select class="form-control" id="sel1" name="category">
+       <!--  <div class="form-group">
+                            <label for="category" class="col-md-4 control-label">Select Category</label>
   
-    <option value="{{ old('category') }}">Select Category</option>
-
-      <option value="News">News</option>
-       <option value="politics">Politics</option>
-      <option value="social">Social</option>
-      <option value="Translated">Translated</option>
-       <option value="Entertainment">Entertainment</option>
-        <option value="ScienceandTechnology">Science and Technology</option>
-          <option value="Opinions">Opinions</option>
-  </select/>
+</div> -->
+   <div class="form-group">
+<label for="category" class="col-md-4 control-label">Select Category</label>
+    <select class="form-control" name="category">
+        
+    @foreach($categories as $category)
+      <option value="{{$category->id}}">{{$category->name}}</option>
+    @endforeach
+  </select>
+  
   </div>
   <div class="form-group">
      <select class="form-control" id="sel1" name="subcategory">

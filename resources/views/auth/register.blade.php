@@ -1,11 +1,20 @@
 @extends('layouts.app')
 
+
 @section('content')
 
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
+
+                <script type="text/javascript">
+$(document).ready(function () {
+    $("[name='country']").on("change", function () {
+        $("[name='phone_number']").val($(this).find("option:selected").data("code"));
+    });
+});
+</script>
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
@@ -80,9 +89,19 @@
                                 @endif
                             </div>
                         </div>
-                      
-                       
-                        <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
+                    <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
+                        <label for="country" class="col-md-4 control-label">Country</label>
+                      <?php $categories = App\Countrycode::all(); ?>
+                      <div class="col-md-6">
+<select name="country" class="form-control"  id="country">
+        <option value="" selected disabled style="display:none">Select Country</option>
+        @foreach ($categories as $category)
+            <option data-code="{{ $category->mobilecode }}" value="{{ $category->id }}">{{ $category->name }}</option>
+        @endforeach
+    </select>
+</div>
+                   </div>    
+                       <!--  <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
                             <label for="country" class="col-md-4 control-label">Country</label>
 
                             <div class="col-md-6">
@@ -94,7 +113,7 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>
+                        </div> -->
                         <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
                             <label for="city" class="col-md-4 control-label">City</label>
 
@@ -113,7 +132,7 @@
                             <label for="phs" class="col-md-4 control-label">Phone Number</label>
 
                             <div class="col-md-6">
-                                <input id="cellPhone" type="text" class="form-control" name="phone_number" value="{{ old('phone_number') }}">
+                                <input id="phone" type="text" class="form-control" name="phone_number" value="{{ old('phone_number') }}">
 
                                 @if ($errors->has('phone_number'))
                                     <span class="help-block">
@@ -193,3 +212,4 @@
     </div>
 </div>
 @endsection
+

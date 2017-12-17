@@ -9,7 +9,7 @@
 @foreach ($uploadedvideos as $video)
 <div class="col-sm-6"> 
 
-  <video width="700"  controls>
+  <video width="600"  controls>
   <source src="/videos/{{ $video->uploaded_video }}">
 
 

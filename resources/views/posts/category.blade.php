@@ -17,13 +17,14 @@
 There is no post till now. Login and write a new post now!!!
 @else
 <div id="chatter">
-      <div id="chatter_hero">
+     
+  @foreach( $posts as $post )
+   <div id="chatter_hero">
     <div id="chatter_hero_dimmer">
-       <h3>Your All Posts</h3>
+       <h3>{{ $post->category }}</h3>
     </div>
  
   </div>
-  @foreach( $posts as $post )
   <div class="discussions">
     <div class="discussion_list">
        <div class="chatter_middle">

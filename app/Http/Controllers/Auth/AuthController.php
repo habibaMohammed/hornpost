@@ -45,6 +45,8 @@ class AuthController extends Controller
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
+
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -86,6 +88,7 @@ class AuthController extends Controller
          $users = User::all();
         $count = count( $users) + 1;
         $usercode=$first.$last.$country.$city.$count;
+
         return User::create([
             
           
